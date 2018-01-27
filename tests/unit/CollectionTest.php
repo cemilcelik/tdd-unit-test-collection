@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Support\Collection;
 use IteratorAggregate;
+use ArrayIterator;
 
 class CollectionTest extends \PHPUnit_Framework_TestCase
 {
@@ -43,5 +44,23 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 		$collection = new Collection;
 
 		$this->assertInstanceOf(IteratorAggregate::class, $collection);
+	}
+
+	/** @test */
+	public function collection_can_be_iterated()
+	{
+		$collection = new Collection([
+			'one', 'two', 'three'
+		]);
+
+		$items = [];
+
+		foreach ($collection as $key => $value) {
+			$items[$key] = $value;
+		}
+
+		$this->assertCount(3, $items);
+		$this->assertEquals($items, $collection->get());
+		$this->assertInstanceOf(ArrayIterator::class, $collection->getIterator());
 	}
 }
