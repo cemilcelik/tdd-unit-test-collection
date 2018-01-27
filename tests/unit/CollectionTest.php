@@ -23,4 +23,14 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 
 		$this->assertEquals(3, $collection->count());
 	}
+
+	/** @test */
+	public function items_returned_match_items_passed_in()
+	{
+		$collection = new Collection([
+			'one', 'two', 'three'
+		]);
+
+		$this->assertCount(3, $collection->get());
+	}
 }
