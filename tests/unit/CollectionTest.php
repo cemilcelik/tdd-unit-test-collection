@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Support\Collection;
+use IteratorAggregate;
 
 class CollectionTest extends \PHPUnit_Framework_TestCase
 {
@@ -34,5 +35,13 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 		$this->assertCount(2, $collection->get());
 		$this->assertEquals('one', $collection->get()[0]);
 		$this->assertEquals('two', $collection->get()[1]);
+	}
+
+	/** @test */
+	public function collection_is_instance_of_iterator_aggregate()
+	{
+		$collection = new Collection;
+
+		$this->assertInstanceOf(IteratorAggregate::class, $collection);
 	}
 }
