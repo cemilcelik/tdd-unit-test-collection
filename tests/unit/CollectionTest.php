@@ -28,9 +28,11 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 	public function items_returned_match_items_passed_in()
 	{
 		$collection = new Collection([
-			'one', 'two', 'three'
+			'one', 'two'
 		]);
 
-		$this->assertCount(3, $collection->get());
+		$this->assertCount(2, $collection->get());
+		$this->assertEquals('one', $collection->get()[0]);
+		$this->assertEquals('two', $collection->get()[1]);
 	}
 }
