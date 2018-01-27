@@ -31,7 +31,7 @@ class User
 		$this->last_name = trim($lastName);
 	}
 
-	public function getLastName(): String
+	public function getLastName(): string
 	{
 		return $this->last_name;
 	}
