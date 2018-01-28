@@ -84,5 +84,32 @@ class CollectionTest extends \PHPUnit_Framework_TestCase
 		$this->assertCount(3, $collection->get());
 		$this->assertEquals(3, $collection->count());
 		$this->assertEquals('three', $collection->get()[2]);
+		$this->assertContains('three', $collection->get());
+	}
+
+	/** @test */
+	public function returns_json_encoded_items()
+	{
+		$collection = new Collection([
+			['username' => 'johndoe', 'email' => 'john@doe.com'],
+			['username' => 'janedoe', 'email' => 'jane@doe.com']
+		]);
+
+		$this->assertInternalType('string', $collection->toJson());
+		$this->assertEquals('[{"username":"johndoe","email":"john@doe.com"},{"username":"janedoe","email":"jane@doe.com"}]', $collection->toJson());
+	}
+
+	/** @test */
+	public function jsn_encoding_a_collection_object_returns_json(Type $var = null)
+	{
+		$collection = new Collection([
+			['username' => 'johndoe', 'email' => 'john@doe.com'],
+			['username' => 'janedoe', 'email' => 'jane@doe.com']
+		]);
+
+		$encoded = json_encode($collection);
+
+		$this->assertInternalType('string', $encoded);
+		$this->assertEquals('[{"username":"johndoe","email":"john@doe.com"},{"username":"janedoe","email":"jane@doe.com"}]', $encoded);
 	}
 }
