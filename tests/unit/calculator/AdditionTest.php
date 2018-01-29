@@ -4,6 +4,7 @@ namespace Tests\Unit\Calculator;
 
 use PHPUnit\Framework\TestCase;
 use App\Calculator\Addition;
+use App\Calculator\Exceptions\NoOperandException;
 
 class AdditionTest extends TestCase
 {
@@ -20,7 +21,7 @@ class AdditionTest extends TestCase
 	/** @test */
 	public function no_operands_given_throws_exception_when_calculating()
 	{
-		$this->expectException(\App\Calculator\Exceptions\NoOperandException::class);
+		$this->expectException(NoOperandException::class);
 
 		$addition = new Addition;
 
