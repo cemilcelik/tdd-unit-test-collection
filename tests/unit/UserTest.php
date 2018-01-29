@@ -2,9 +2,10 @@
 
 namespace Tests\Unit;
 
+use PHPUnit\Framework\TestCase;
 use App\Model\User;
 
-class UserTest extends \PHPUnit_Framework_TestCase
+class UserTest extends TestCase
 {
 	public $user;
 

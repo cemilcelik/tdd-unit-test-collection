@@ -2,11 +2,12 @@
 
 namespace Tests\Unit;
 
-use App\Support\Collection;
+use PHPUnit\Framework\TestCase;
 use IteratorAggregate;
 use ArrayIterator;
+use App\Support\Collection;
 
-class CollectionTest extends \PHPUnit_Framework_TestCase
+class CollectionTest extends TestCase
 {
 	/** @test */
 	public function empty_instantiated_collection_returns_no_items()
